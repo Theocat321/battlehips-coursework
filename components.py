@@ -2,13 +2,14 @@
 import json
 import sys
 import random
+import logging
 
 def initialise_board(size:int = 10) -> list[list]:
     '''Returns an empty grid of dimensions size'''
     try:
         if size < 1:
             # Raise value error and later raises general exception
-            raise ValueError("Size of board cannot be 0 or negative") 
+            raise ValueError
         board = []
         for x in range(0,size):
             current_line = []
@@ -17,8 +18,13 @@ def initialise_board(size:int = 10) -> list[list]:
             board.append(current_line)
         return board
     except TypeError as e:
+        logging.error("Initalise board requires integer")
         raise TypeError("Initalise_board expects integer type") from e
+    except ValueError as e:
+        logging.error("Board size must be greater than 0")
+        raise ValueError("Size of board cannot be 0 or negative") from e
     except Exception as e:
+        logging.error("Unknown error when initalising board")
         raise Exception("Unknown exception has occured") from e
 
 def create_battleships(filename:str = "battleships.txt") -> dict:
@@ -31,8 +37,10 @@ def create_battleships(filename:str = "battleships.txt") -> dict:
             battleships[elements[0]] = int(elements[1].strip())
         return battleships
     except TypeError as e:
+        logging.error("Filename in create battlehships requires string as parameter")
         raise TypeError("File name should be a string") from e
     except Exception as e:
+        logging.error("Unknown error when creating battleships")
         raise Exception("Unknown exception has occured") from e
 
 def place_battleships(board:list[list] , ships: dict, algorithm:str = "simple") -> list[list]:
@@ -65,7 +73,7 @@ def place_battleships(board:list[list] , ships: dict, algorithm:str = "simple") 
                     board[row][x] = key
                 row+=1 
             except IndexError: # catching if there is too many ships for the board or if ship to long
-                print("Ship too long for board or too many ships for the simple algorithm")
+                logging.error("Ship too long for board or too many ships for the simple algorithm")
                 sys.exit(1)
     elif (algorithm.lower() == "random"):     
         board_size = len(board) # square board

@@ -1,4 +1,5 @@
-'''Test functions written by Adam'''
+'''Test functions written by Student's work'''
+import pytest
 import mp_game_engine as mp
 import game_engine as ge
 import components as co
@@ -51,4 +52,11 @@ def test_initalise_board():
     # Testing indended funciton of the board
     size = 10
     assert len(co.initialise_board(size)) == size
-    # Testing negative board sizes fail 
+    # Testing negative board sizes fail
+    with pytest.raises(ValueError) as excinfo:
+        co.initialise_board(-1)
+    assert str(excinfo.value) == "Size of board cannot be 0 or negative"
+    # Testing if incorrect types returns error
+    with pytest.raises(TypeError) as excinfo:
+        co.initialise_board("")
+    assert str(excinfo.value) == "Initalise_board expects integer type"

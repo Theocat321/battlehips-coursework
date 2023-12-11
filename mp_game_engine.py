@@ -1,4 +1,5 @@
 '''Run this file when playing against the AI in the CLI'''
+import logging
 import random
 import game_engine as ge
 import components as cp
@@ -19,7 +20,7 @@ def ai_opponent_game_loop() ->  None:
     Starts the game via the CLI against AI
     '''
     print("Welcome to battleships")
-
+    logging.debug("Multiplayer game started")
     battleships = cp.create_battleships()
     # Init user
     user_board = cp.place_battleships(EMPTY_BOARD,battleships,"custom")
@@ -44,12 +45,13 @@ def ai_opponent_game_loop() ->  None:
         while player_invalid_attack:
             user_coords = ge.cli_coordinates_input()
             if(user_coords == tuple):
-                print("Error in input")
+                logging.warning("Bad user input from CLI")
                 continue
-            elif user_coords[0] < len(user_board) and user_coords[1] < len(user_board):
+            elif user_coords[0] < len(user_board) and user_coords[0] > -1 and user_coords[1] > -1 and user_coords[1] < len(user_board):
                 player_invalid_attack = False
             else:
-                print("Invalid integer input: Must be between 0 and " + str(len(user_board)))
+                warning_str = "Invalid integer input: Must be between 0 and %s" + str(len(user_board))
+                logging.warning(warning_str)
         user_attack = ge.attack(user_coords,players["ai"]['board'],players["ai"]['battleships'])
         if user_attack:
             print("You have hit!")
@@ -72,18 +74,17 @@ def ai_opponent_game_loop() ->  None:
             game_over = True
         elif ai_ships_hit == total_hits_required:
             game_over = True
-    print("Game over!")
+    logging.debug("Game over")
     if player_ships_hit == 17:
-        print("Player has won!")
+        logging.debug("Player has won")
     else:
-        print("AI has won!")
+        logging.debug("AI has won")
 
 def pretty_print_board(board:list[list]) -> None:
     '''
     Prints 2D array (board) like a table into terminal
     For pretty output ensure terminal window is large
     '''
-    ## tODO; check this for errors
     print("    0 1 2 3 4 5 6 7 8 9")
     for i, row in enumerate(board):
         line = str(i) + "  "

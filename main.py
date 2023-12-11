@@ -1,10 +1,15 @@
+'''TODO: DOCTSTRING'''
 import json
+import logging
 from flask import Flask, request, render_template,jsonify
 from components import create_battleships, initialise_board, place_battleships
 from mp_game_engine import generate_attack
 import game_engine as ge
 
 app = Flask(__name__)
+
+# Logging config
+logging.basicConfig(filename='main.log', encoding='utf-8', level=logging.DEBUG)
 
 players = {}
 ai_attacks = [] # list of ai attacks
@@ -42,12 +47,14 @@ def placement_interface():
         user_dict = {'board':user_board}
         players['ai'] = ai_dict
         players['user'] = user_dict
+        logging.debug("User board recieved")
         return jsonify({'message': 'Received'}), 200
     elif request.method == "GET":
         return render_template('placement.html',board_size = len(initialise_board()), ships = ships)
 
 @app.route("/attack",methods=['GET'])
 def attack():
+    '''TODO: doctstring'''
     global ai_ships, user_ships, ai_attack,players, user_attacks
     x = int(request.args.get('x'))
     y = int(request.args.get('y'))
@@ -55,6 +62,7 @@ def attack():
     coordinates = (x,y)
     ## Check if user has already attacked this spot
     if coordinates in user_attacks:
+        logging.warning("User cannot select same square more tha once")
         return
     user_attack = ge.attack(coordinates,players['ai']['board'],ai_ships)
     user_attacks.append(coordinates)
@@ -72,19 +80,14 @@ def attack():
     has_user_won = all(value == 0 for value in ai_ships.values())
     has_ai_won = all(value == 0 for value in user_ships.values())
 
-    # Setting global ships for each to the changed values
-    print("AI has hit: "+str(ai_attack))
-    print("AO battle ships: "+str(ai_ships))
-    print("user ships: "+str(user_ships))
-
     ## Finishing the game
-
     # If someone has won reset the ships
     if has_user_won:
         ai_ships = create_battleships()
         user_ships = create_battleships()
         players = {}
         ai_attack = []
+        logging.debug("User has won the game")
         return jsonify({
             'hit': user_attack,
             'AI_Turn': ai_coords,
@@ -95,6 +98,7 @@ def attack():
         user_ships = create_battleships()
         players = {}
         ai_attack = []
+        logging.debug("AI has won the game")
         return jsonify({
             'hit': user_attack,
             'AI_Turn': ai_coords,
