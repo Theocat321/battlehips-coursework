@@ -5,38 +5,46 @@ import random
 
 def initialise_board(size:int = 10) -> list[list]:
     '''Returns an empty grid of dimensions size'''
-    #todo: exepction handling
-    #todo: testing for these errors
     try:
+        if size < 1:
+            # Raise value error and later raises general exception
+            raise ValueError("Size of board cannot be 0 or negative") 
         board = []
         for x in range(0,size):
             current_line = []
             for y in range(0,size):
                 current_line.append(None)
-            board.append(current_line)   
+            board.append(current_line)
         return board
-    except TypeError:
-        raise TypeError("Initalise_board expects integer type")
-    except ValueError:
-        raise ValueError("Size of board cannot be negative")
-
-    
+    except TypeError as e:
+        raise TypeError("Initalise_board expects integer type") from e
+    except Exception as e:
+        raise Exception("Unknown exception has occured") from e
 
 def create_battleships(filename:str = "battleships.txt") -> dict:
     '''Reads in the battle ships from the filename passed'''
-    #todo: exception handling
-    #todo: testing these errors
-    battleships={}
-    f = open(filename,"r")
-    for line in f:
-        elements = line.split(":")
-        battleships[elements[0]] = int(elements[1].strip())
-    return battleships
+    try:
+        battleships={}
+        f = open(filename,"r", encoding='utf-8')
+        for line in f:
+            elements = line.split(":")
+            battleships[elements[0]] = int(elements[1].strip())
+        return battleships
+    except TypeError as e:
+        raise TypeError("File name should be a string") from e
+    except Exception as e:
+        raise Exception("Unknown exception has occured") from e
 
 def place_battleships(board:list[list] , ships: dict, algorithm:str = "simple") -> list[list]:
-    '''Places the battle ships onto the board and returns this
-    FINISH THIS DOCTSTRING!'''
-    ##todo: error handling & tests
+    '''Places the battle ships onto the board and returns the outcome
+
+    ---Parameters---
+    board: List[List]
+    ships: dictionary
+    algorithm: string
+    ---Return---
+    List[list]
+    '''
     def check_ship_fits(inital_row:int, inital_column:int,direction:int,ship_length:int) -> bool:
         # 0: hoz, 1:vert
         if (direction == 0):
@@ -49,7 +57,6 @@ def place_battleships(board:list[list] , ships: dict, algorithm:str = "simple") 
                 return False
             else:
                 return True
-                
     if (algorithm.lower() == "simple"):
         row = 0
         for key,value in ships.items():
@@ -69,41 +76,38 @@ def place_battleships(board:list[list] , ships: dict, algorithm:str = "simple") 
                 inital_row = random.randint(0,board_size-1)
                 inital_column = random.randint(0,board_size-1)
                 direction = random.randint(0,1) # 0: hoz, 1:vert
-
                 # Check ship fits
                 ship_fits = check_ship_fits(inital_row,inital_column,direction,ship_length)
                 if not ship_fits:
                     continue # next iteration and try again
-                else:
-                    # Check if all positions requred are empty
-                    # if so change them
-                    is_obstructed = False
+                # Check if all positions requred are empty
+                # if so change them
+                is_obstructed = False
+                for x in range(0,ship_length):
+                    if direction == 0:
+                        current_column = inital_column + x
+                        # If a ship occupies the location break    
+                        if board[inital_row][current_column] is not None:
+                            is_obstructed = True
+                            break
+                    else:
+                        current_row = inital_row + x
+                        if board[current_row][inital_column] is not None:
+                            is_obstructed = True
+                            break
+                # place the ship if not obstructed
+                if not is_obstructed:
                     for x in range(0,ship_length):
                         if direction == 0:
                             current_column = inital_column + x
-                            # If a ship occupies the location break    
-                            if(board[inital_row][current_column] is not None):
-                                is_obstructed = True
-                                break
+                            board[inital_row][current_column] = ship_name
                         else:
                             current_row = inital_row + x
-                            if(board[current_row][inital_column] is not None):
-                                is_obstructed = True
-                                break
-                        
-                    # place the ship if not obstructed
-                    if not is_obstructed:
-                        for x in range(0,ship_length):
-                            if direction == 0:
-                                current_column = inital_column + x
-                                board[inital_row][current_column] = ship_name
-                            else:
-                                current_row = inital_row + x
-                                board[current_row][inital_column] = ship_name
-                        ship_placed = True
+                            board[current_row][inital_column] = ship_name
+                    ship_placed = True
         return board
-    elif (algorithm.lower() == "custom"):
-        # open json 
+    elif algorithm.lower() == "custom":
+        # open json
         with open("placement.json","r",encoding="UTF-8") as f:
             placement_lines = f.readline()
         place_ships = json.loads(placement_lines) # shipname:[x_coord, y_coord, orientation]
@@ -123,13 +127,10 @@ def place_battleships(board:list[list] , ships: dict, algorithm:str = "simple") 
                 else:
                     current_row = inital_row + x
                     board[current_row][inital_column] = current_ship_name
-
-        ##TODO: ENSURE ALL SHIPS FIT ON THE GRID
     else:
-        raise ValueError("Algorithm argument invald") # if parameter for algorithm is invalid, exception
+        raise ValueError("Algorithm argument invald") # if parameter for algorithm is invalid
     return board
 
-if __name__ == "__main__":
-    # ships_dict = create_battleships()
-    # new_board = place_battleships(initialise_board(),ships_dict,algorithm="custom")
-    print(initialise_board(-1))
+# if __name__ == "__main__":
+#     ships_dict = create_battleships()
+#     new_board = place_battleships(initialise_board(),ships_dict,algorithm="custom")
