@@ -62,27 +62,28 @@ def place_battleships(board:list[list] , ships: dict, algorithm:str = "simple") 
     '''
     def check_ship_fits(inital_row:int, inital_column:int,direction:int,ship_length:int) -> bool:
         # 0: hoz, 1:vert
-        if (direction == 0):
-            if ((inital_column + ship_length) > board_size-1):
+        if direction == 0:
+            if (inital_column + ship_length) > board_size-1:
                 return False
             else:
                 return True
         else:
-            if((inital_row + ship_length) > board_size-1):
+            if (inital_row + ship_length) > board_size-1:
                 return False
             else:
                 return True
-    if (algorithm.lower() == "simple"):
+    if algorithm.lower() == "simple":
         row = 0
         for key,value in ships.items():
             try:
                 for x in range(value):
                     board[row][x] = key
-                row+=1 
-            except IndexError: # catching if there is too many ships for the board or if ship to long
+                row+=1
+            except IndexError:
+                # catching if there is too many ships for the board or if ship to long
                 logging.error("Ship too long for board or too many ships for the simple algorithm")
                 sys.exit(1)
-    elif (algorithm.lower() == "random"):     
+    elif algorithm.lower() == "random":
         board_size = len(board) # square board
         # brute force method
         for ship_name, ship_length in ships.items():
@@ -101,7 +102,7 @@ def place_battleships(board:list[list] , ships: dict, algorithm:str = "simple") 
                 for x in range(0,ship_length):
                     if direction == 0:
                         current_column = inital_column + x
-                        # If a ship occupies the location break    
+                        # If a ship occupies the location break
                         if board[inital_row][current_column] is not None:
                             is_obstructed = True
                             break
@@ -146,7 +147,7 @@ def place_battleships(board:list[list] , ships: dict, algorithm:str = "simple") 
                             board[current_row][inital_column] = current_ship_name
                     except IndexError as e:
                         # Not using f string as errors arrised in logging and raising error
-                        error_str = "Placement json error: %s doesn't fit" %current_ship_name 
+                        error_str = "Placement json error: %s doesn't fit" %current_ship_name
                         logging.error(error_str)
                         raise IndexError(error_str) from e
                     except Exception as e:
