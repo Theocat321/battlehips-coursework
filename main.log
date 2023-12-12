@@ -56,3 +56,11 @@ ERROR:root:Empty battleships.txt file
 DEBUG:root:Multiplayer game started
 ERROR:root:Empty battleships.txt file
 ERROR:root:Unknown error when creating battleships
+DEBUG:root:Multiplayer game started
+DEBUG:root:Multiplayer game started
+DEBUG:root:Multiplayer game started
+DEBUG:root:Multiplayer game started
+DEBUG:root:Multiplayer game started
+DEBUG:root:Multiplayer game started
+DEBUG:root:Multiplayer game started
+ERROR:root:Json decoding error, placement.json most likely empty

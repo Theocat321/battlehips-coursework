@@ -1,5 +1,6 @@
 '''Contains functions for core game functionality'''
 import json
+from json.decoder import JSONDecodeError
 import sys
 import random
 import logging
@@ -121,35 +122,42 @@ def place_battleships(board:list[list] , ships: dict, algorithm:str = "simple") 
                     ship_placed = True
         return board
     elif algorithm.lower() == "custom":
-        # open json
-        with open("placement.json","r",encoding="UTF-8") as f:
-            placement_lines = f.readline()
-        place_ships = json.loads(placement_lines) # shipname:[x_coord, y_coord, orientation]
-        # then put the ship on the board
-        for current_ship_name,info_arr in place_ships.items():
-            # get length of current ship
-            current_ship_length = ships[current_ship_name]
-            inital_column = int(info_arr[0])
-            inital_row = int(info_arr[1])
-            direction = info_arr[2]
-            # Iterate through the length of current ship
-            for x in range(current_ship_length):
-                try:
-                    # Check orientation of the ship
-                    if direction == 'h':
-                        current_column = inital_column + x
-                        board[inital_row][current_column] = current_ship_name
-                    else:
-                        current_row = inital_row + x
-                        board[current_row][inital_column] = current_ship_name
-                except IndexError as e:
-                    # Not using f string as errors arrised in logging and raising error
-                    error_str = "Placement json error: %s doesn't fit" %current_ship_name 
-                    logging.error(error_str)
-                    raise IndexError(error_str) from e
-                except Exception as e:
-                    logging.error("Unknown exception occured")
-                    raise Exception("Unknown exception occured") from e
+        try:
+            # open json
+            with open("placement.json","r",encoding="UTF-8") as f:
+                placement_lines = f.readline()
+            place_ships = json.loads(placement_lines) # shipname:[x_coord, y_coord, orientation]
+            # then put the ship on the board
+            for current_ship_name,info_arr in place_ships.items():
+                # get length of current ship
+                current_ship_length = ships[current_ship_name]
+                inital_column = int(info_arr[0])
+                inital_row = int(info_arr[1])
+                direction = info_arr[2]
+                # Iterate through the length of current ship
+                for x in range(current_ship_length):
+                    try:
+                        # Check orientation of the ship
+                        if direction == 'h':
+                            current_column = inital_column + x
+                            board[inital_row][current_column] = current_ship_name
+                        else:
+                            current_row = inital_row + x
+                            board[current_row][inital_column] = current_ship_name
+                    except IndexError as e:
+                        # Not using f string as errors arrised in logging and raising error
+                        error_str = "Placement json error: %s doesn't fit" %current_ship_name 
+                        logging.error(error_str)
+                        raise IndexError(error_str) from e
+                    except Exception as e:
+                        logging.error("Unknown exception occured")
+                        raise Exception("Unknown exception occured") from e
+        except JSONDecodeError as e:
+            logging.error("Json decoding error, placement.json most likely empty")
+            raise e
+        except Exception as e:
+            logging.error("Unknown exception occured in the custom place_battleships function")
+            raise Exception("Unknown exception occured") from e
     else:
         raise ValueError("Algorithm argument invald") # if parameter for algorithm is invalid
     return board
