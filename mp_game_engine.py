@@ -4,6 +4,8 @@ import random
 import game_engine as ge
 import components as cp
 
+logging.basicConfig(filename='main.log', encoding='utf-8', level=logging.DEBUG)
+
 players = {} # key = name, value = [board, battleships dict]
 EMPTY_BOARD = cp.initialise_board()
 

@@ -1,4 +1,9 @@
-'''TODO: DOCTSTRING'''
+'''Module runs a development server to play against the AI
+
+Start by running this file, navigate to 127.0.0.1:5000 in a browser
+Place your ships
+Guess where the AI has placed their ships
+'''
 import json
 import logging
 from flask import Flask, request, render_template,jsonify
@@ -54,7 +59,18 @@ def placement_interface():
 
 @app.route("/attack",methods=['GET'])
 def attack():
-    '''TODO: doctstring'''
+    '''
+    Accepts GET requests
+
+    x and y coorinates should be passed in the request.
+    These coordinates are used to process an attack on the AI board
+
+    AI attack is generated and used against the player. 
+
+    Checks are completed to see if the game is finished
+
+    Returns json response to the front end
+    '''
     global ai_ships, user_ships, ai_attack,players, user_attacks
     x = int(request.args.get('x'))
     y = int(request.args.get('y'))

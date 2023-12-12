@@ -4,6 +4,8 @@ import sys
 import random
 import logging
 
+logging.basicConfig(filename='main.log', encoding='utf-8', level=logging.DEBUG)
+
 def initialise_board(size:int = 10) -> list[list]:
     '''Returns an empty grid of dimensions size'''
     try:
@@ -128,13 +130,22 @@ def place_battleships(board:list[list] , ships: dict, algorithm:str = "simple") 
             direction = info_arr[2]
             # Iterate through the length of current ship
             for x in range(current_ship_length):
-                # Check orientation of the ship
-                if direction == 'h':
-                    current_column = inital_column + x
-                    board[inital_row][current_column] = current_ship_name
-                else:
-                    current_row = inital_row + x
-                    board[current_row][inital_column] = current_ship_name
+                try:
+                    # Check orientation of the ship
+                    if direction == 'h':
+                        current_column = inital_column + x
+                        board[inital_row][current_column] = current_ship_name
+                    else:
+                        current_row = inital_row + x
+                        board[current_row][inital_column] = current_ship_name
+                except IndexError as e:
+                    # Not using f string as errors arrised in logging and raising error
+                    error_str = "Placement json error: %s doesn't fit" %current_ship_name 
+                    logging.error(error_str)
+                    raise IndexError(error_str) from e
+                except Exception as e:
+                    logging.error("Unknown exception occured")
+                    raise Exception("Unknown exception occured") from e
     else:
         raise ValueError("Algorithm argument invald") # if parameter for algorithm is invalid
     return board
