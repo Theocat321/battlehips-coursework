@@ -1,6 +1,9 @@
 # Completed Features
 <!-- TODO all completed features -->
 
+### Optimal ship placement
+I have added another algorithm to the place_battleships function which places the ships in the most optimal locations. As referenced here (Cite)[http://www.datagenetics.com/blog/december32011/] the most optimal placement puts ships adjacent to one another to confuse the user. This has been used in the placement algorithm. This can be tested in mp_game_engine.py by changing "custom" to "optimal" in the player board
+
 # Battleships ReadMe
 
 ## Intro

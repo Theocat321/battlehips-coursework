@@ -53,6 +53,8 @@ def create_battleships(filename:str = "battleships.txt") -> dict:
 def place_battleships(board:list[list] , ships: dict, algorithm:str = "simple") -> list[list]:
     '''Places the battle ships onto the board and returns the outcome
 
+    algorithms include "simple", "random", "custom" and "optimal"
+
     ---Parameters---
     board: List[List]
     ships: dictionary
@@ -159,6 +161,26 @@ def place_battleships(board:list[list] , ships: dict, algorithm:str = "simple") 
         except Exception as e:
             logging.error("Unknown exception occured in the custom place_battleships function")
             raise Exception("Unknown exception occured") from e
+    elif algorithm.lower() == "optimal":
+        ##Todo: optimal battleship placement
+        try:
+            # open json
+            with open("optimal_placement.json","r",encoding="UTF-8") as f:
+                placement_lines = f.readline()
+            optimal_placements = json.loads(placement_lines)
+            # select a random placement type
+            placement_key = random.randint(1,4)
+
+            placement_ships  = optimal_placements[str(placement_key)]
+            # dump placement json with optimal layout
+            with open('placement.json','w',encoding='UTF-8') as f:
+                json.dump(placement_ships,f)
+
+            # Call itself
+            return place_battleships(board, ships, "custom")
+        except Exception as e:
+            logging.error("Error in Placing optimal ships")
+            raise Exception() from e
     else:
         raise ValueError("Algorithm argument invald") # if parameter for algorithm is invalid
     return board

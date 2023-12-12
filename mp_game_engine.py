@@ -7,7 +7,6 @@ import components as cp
 logging.basicConfig(filename='main.log', encoding='utf-8', level=logging.DEBUG)
 
 players = {} # key = name, value = [board, battleships dict]
-EMPTY_BOARD = cp.initialise_board()
 
 def generate_attack(board_size:int=10) -> tuple:
     '''
@@ -25,12 +24,12 @@ def ai_opponent_game_loop() ->  None:
     logging.debug("Multiplayer game started")
     battleships = cp.create_battleships()
     # Init user
-    user_board = cp.place_battleships(EMPTY_BOARD,battleships,"custom")
+    user_board = cp.place_battleships(cp.initialise_board(),battleships,"custom")
     user_dict = {'board':user_board,'battleships':battleships}
     players['user'] = user_dict
 
     # Init AI
-    ai_board = cp.place_battleships(EMPTY_BOARD,battleships,"random")
+    ai_board = cp.place_battleships(cp.initialise_board(),battleships,"random")
     ai_dict = {'board':ai_board,'battleships':battleships}
     players['ai'] = ai_dict
 
