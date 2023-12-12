@@ -44,3 +44,15 @@ DEBUG:root:Multiplayer game started
 ERROR:root:Placement json error: {current_ship_name} doesn't fit
 DEBUG:root:Multiplayer game started
 ERROR:root:Placement json error: Battleship doesn't fit
+DEBUG:root:Multiplayer game started
+DEBUG:root:Multiplayer game started
+DEBUG:root:Multiplayer game started
+DEBUG:root:Game started
+ERROR:root:Unknown error when creating battleships
+DEBUG:root:Multiplayer game started
+ERROR:root:Empty battleships.txt file
+DEBUG:root:Multiplayer game started
+ERROR:root:Empty battleships.txt file
+DEBUG:root:Multiplayer game started
+ERROR:root:Empty battleships.txt file
+ERROR:root:Unknown error when creating battleships

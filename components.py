@@ -37,13 +37,17 @@ def create_battleships(filename:str = "battleships.txt") -> dict:
         for line in f:
             elements = line.split(":")
             battleships[elements[0]] = int(elements[1].strip())
+        # Checking if any battle ships exist
+        if not battleships:
+            logging.error("Empty battleships.txt file")
+            raise Exception
         return battleships
     except TypeError as e:
         logging.error("Filename in create battlehships requires string as parameter")
         raise TypeError("File name should be a string") from e
     except Exception as e:
         logging.error("Unknown error when creating battleships")
-        raise Exception("Unknown exception has occured") from e
+        raise Exception("Unknown exception has occured - check logs") from e
 
 def place_battleships(board:list[list] , ships: dict, algorithm:str = "simple") -> list[list]:
     '''Places the battle ships onto the board and returns the outcome
