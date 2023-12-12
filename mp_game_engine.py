@@ -44,13 +44,15 @@ def ai_opponent_game_loop() ->  None:
         player_invalid_attack = True
         while player_invalid_attack:
             user_coords = ge.cli_coordinates_input()
-            if(user_coords == tuple):
+            if user_coords == tuple:
                 logging.warning("Bad user input from CLI")
                 continue
-            elif user_coords[0] < len(user_board) and user_coords[0] > -1 and user_coords[1] > -1 and user_coords[1] < len(user_board):
+            elif (user_coords[0] < len(user_board) and user_coords[0] > -1 and
+                    user_coords[1] > -1 and user_coords[1] < len(user_board)):
                 player_invalid_attack = False
             else:
-                warning_str = "Invalid integer input: Must be between 0 and %s" + str(len(user_board))
+                warning_str = ("Invalid integer input: Must be between 0 and %s"
+                                + str(len(user_board)))
                 logging.warning(warning_str)
         user_attack = ge.attack(user_coords,players["ai"]['board'],players["ai"]['battleships'])
         if user_attack:
@@ -97,4 +99,3 @@ def pretty_print_board(board:list[list]) -> None:
 
 if __name__ == "__main__":
     ai_opponent_game_loop()
-    
