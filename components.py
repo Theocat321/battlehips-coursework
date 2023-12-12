@@ -162,7 +162,6 @@ def place_battleships(board:list[list] , ships: dict, algorithm:str = "simple") 
             logging.error("Unknown exception occured in the custom place_battleships function")
             raise Exception("Unknown exception occured") from e
     elif algorithm.lower() == "optimal":
-        ##Todo: optimal battleship placement
         try:
             # open json
             with open("optimal_placement.json","r",encoding="UTF-8") as f:
