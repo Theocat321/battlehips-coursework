@@ -1,7 +1,7 @@
-coursework
-==========
+battleships
+===========
 
 .. toctree::
    :maxdepth: 4
 
-   coursework
+   battleships

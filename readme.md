@@ -88,7 +88,9 @@ To run tests be in the root directory for the project in terminal and enter `pyt
 
 ## Developer Documentation
 Full documentation can be seen throughout the code base in comments and docstrings. There are docstrings for each function and module. 
-<!-- TODO sphinx documenation -->
+
+For sphinx documentation open `docs/_build_html/index.html`<br>
+*Note had issues generating the document so I moved things around in directories to get it to generate then it broke imports so I moved it all back later. Issue with the main module also*
 
 To view logs open `main.log`. This stores any notable processes from the program.
 
