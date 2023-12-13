@@ -23,6 +23,7 @@ user_attacks = [] # list of player attacks
 ai_ships = create_battleships()
 user_ships = create_battleships()
 ai_attack_stack = [] # this is only used when using harder AI
+HARD_MODE = True
 
 @app.route('/',methods=['GET'])
 def root():
@@ -86,15 +87,18 @@ def attack():
     user_attacks.append(coordinates)
 
     ## Generate AI attack back at the user
-    # ai_coords = generate_attack(len(players['user']['board']))
-
-    ## HARDER ATTACK VERSION - uncomment above for normal and comment below
-    ai_coords, ai_attack_stack = generate_attack_improved(players['user']['board'],ai_attack_stack)
+    if not HARD_MODE:
+        ai_coords = generate_attack(len(players['user']['board']))
+    else:
+        ## HARDER ATTACK VERSION - uncomment above for normal and comment below
+        ai_coords, ai_attack_stack = generate_attack_improved(players['user']['board'],ai_attack_stack)
     # Ensure square not hit before
     while ai_coords in ai_attacks:
-        # ai_coords = generate_attack(len(players['user']['board']))
-        # HARDER ATTACK VERSION
-        ai_coords, ai_attack_stack = generate_attack_improved(players['user']['board'],ai_attack_stack)
+        if not HARD_MODE:
+            ai_coords = generate_attack(len(players['user']['board']))
+        else:
+            # HARDER ATTACK VERSION
+            ai_coords, ai_attack_stack = generate_attack_improved(players['user']['board'],ai_attack_stack)
     # Add hit to list
     ai_attacks.append(ai_coords)
     ai_attack = ge.attack(ai_coords,players['user']['board'],user_ships)
