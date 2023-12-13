@@ -1,8 +1,22 @@
 # Completed Features
-<!-- TODO all completed features -->
+
+### General features
+All expected features have been implemented: simple game, multi player game, flask game. ALl of which the user can win by guessing ships and the AI (where applicable) can win. 
+
+### Validation
+Defensive programming and try except statements are implemented throughout the project.
+
+### Additional Testing
+I have written some tests which can be found in tests/test_by_me.py
+
+### Logging
+Logging is implemented throughout the project. See main.log for previous logs
 
 ### Optimal ship placement
-I have added another algorithm to the place_battleships function which places the ships in the most optimal locations. As referenced here (Cite)[http://www.datagenetics.com/blog/december32011/] the most optimal placement puts ships adjacent to one another to confuse the user. This has been used in the placement algorithm. This can be tested in mp_game_engine.py by changing "custom" to "optimal" in the player board
+I have added another algorithm to the place_battleships function which places the ships in the most optimal locations. As referenced here (Cite)[http://www.datagenetics.com/blog/december32011/] the most optimal placement puts ships adjacent to one another to confuse the user. This can be used in mp_game_engine.py by changing "custom" to "optimal" in the player board
+
+### Hard mode
+There is a constant in main.py named HARD_MODE. When true once the AI hits a shit it will hit the ship until sunk in consecutive turns. This is implemented in the enhanced_ai module.
 
 # Battleships ReadMe
 
@@ -65,13 +79,15 @@ Indivually install each requirement
 5. Use the grid to guess where the AI has placed their ships
 6. Game finishes once all ships are sunk
 
+For hard mode change the HARD_MODE constant to True.
+
 ## Testing
 Tests can be seen in /tests. There are 4 testing files (`test_by_me.py`, `test_functionality.py`,` test_helper_functions.py` `test_students.py`) and 2 configuration files (`battleships.txt` and `placement.json`) followed by an `__init__.py`. Tests have been provided by academics for this project, other than tests in test_by_me.py. These have been written by me to test additional funcitonality. 
 
 To run tests be in the root directory for the project in terminal and enter `pytest` in CLI
 
 ## Developer Documentation
-Full documentation can be seen throughout the code base. There are docstrings for each function and module. 
+Full documentation can be seen throughout the code base in comments and docstrings. There are docstrings for each function and module. 
 <!-- TODO sphinx documenation -->
 
 To view logs open `main.log`. This stores any notable processes from the program.
@@ -87,6 +103,9 @@ Multiplayer game against the AI. Your ships are placed using the placement.json 
 
 #### main.py
 Development server to play against the AI. See intructions above. More function sot enable browser functionality.
+
+#### enhanced_ai
+Additional functionality to make the AI better - much much better!
 
 ## Details
 Author: ********** <br>
