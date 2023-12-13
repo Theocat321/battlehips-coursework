@@ -14,8 +14,8 @@ def attack(coordinates:tuple, board:list[list], battleships:dict) -> bool:
         Returns false
     '''
     # get value in coordianate
-    x = coordinates[0]
-    y = coordinates[1]
+    y = coordinates[0]
+    x = coordinates[1]
     current_value = board[x][y]
 
     # check if ship hit on board
@@ -26,6 +26,7 @@ def attack(coordinates:tuple, board:list[list], battleships:dict) -> bool:
         battleships[current_value] -= 1
         # check if game over
         if battleships[current_value] == 0:
+            logging.debug("sunk ship!")
             print("sunk!")
         return True
     # if not hit

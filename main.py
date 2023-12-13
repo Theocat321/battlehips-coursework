@@ -9,6 +9,7 @@ import logging
 from flask import Flask, request, render_template,jsonify
 from components import create_battleships, initialise_board, place_battleships
 from mp_game_engine import generate_attack
+from enhanced_ai import generate_attack_improved
 import game_engine as ge
 
 app = Flask(__name__)
@@ -21,6 +22,7 @@ ai_attacks = [] # list of ai attacks
 user_attacks = [] # list of player attacks
 ai_ships = create_battleships()
 user_ships = create_battleships()
+ai_attack_stack = [] # this is only used when using harder AI
 
 @app.route('/',methods=['GET'])
 def root():
@@ -71,7 +73,7 @@ def attack():
 
     Returns json response to the front end
     '''
-    global ai_ships, user_ships, ai_attack,players, user_attacks
+    global ai_ships, user_ships, ai_attack,players, user_attacks, ai_attack_stack
     x = int(request.args.get('x'))
     y = int(request.args.get('y'))
 
@@ -84,10 +86,15 @@ def attack():
     user_attacks.append(coordinates)
 
     ## Generate AI attack back at the user
-    ai_coords = generate_attack(len(players['user']['board']))
+    # ai_coords = generate_attack(len(players['user']['board']))
+
+    ## HARDER ATTACK VERSION - uncomment above for normal and comment below
+    ai_coords, ai_attack_stack = generate_attack_improved(players['user']['board'],ai_attack_stack)
     # Ensure square not hit before
     while ai_coords in ai_attacks:
-        ai_coords = generate_attack(len(players['user']['board']))
+        # ai_coords = generate_attack(len(players['user']['board']))
+        # HARDER ATTACK VERSION
+        ai_coords, ai_attack_stack = generate_attack_improved(players['user']['board'],ai_attack_stack)
     # Add hit to list
     ai_attacks.append(ai_coords)
     ai_attack = ge.attack(ai_coords,players['user']['board'],user_ships)
@@ -99,10 +106,7 @@ def attack():
     ## Finishing the game
     # If someone has won reset the ships
     if has_user_won:
-        ai_ships = create_battleships()
-        user_ships = create_battleships()
-        players = {}
-        ai_attack = []
+        reset_globals()
         logging.debug("User has won the game")
         return jsonify({
             'hit': user_attack,
@@ -110,10 +114,7 @@ def attack():
             'finished':'Game Over Player wins'
             })
     elif has_ai_won:
-        ai_ships = create_battleships()
-        user_ships = create_battleships()
-        players = {}
-        ai_attack = []
+        reset_globals()
         logging.debug("AI has won the game")
         return jsonify({
             'hit': user_attack,
@@ -124,6 +125,16 @@ def attack():
         return jsonify({'hit': user_attack,
                 'AI_Turn': ai_coords
                 })
+    
+def reset_globals() -> None:
+    '''Utility procedure for reseting the global variables'''
+    global players, ai_attacks, user_attacks, ai_ships, user_ships, ai_attack_stack
+    players = {}
+    ai_ships = create_battleships()
+    user_ships = create_battleships()
+    ai_attack_stack = []
+    ai_attacks = []
+    user_attacks = []
 
 if __name__ == '__main__':
     app.run(debug=True)
