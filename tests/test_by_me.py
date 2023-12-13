@@ -3,6 +3,7 @@ import pytest
 import mp_game_engine as mp
 import game_engine as ge
 import components as co
+import enhanced_ai as eai
 
 def test_generate_attack_within_board():
     '''
@@ -60,3 +61,12 @@ def test_initalise_board():
     with pytest.raises(TypeError) as excinfo:
         co.initialise_board("")
     assert str(excinfo.value) == "Initalise_board expects integer type"
+
+def test_enhanced_ai():
+    '''Testing the returned types of the enhanced AI'''
+    # Data prep
+    board = co.initialise_board()
+    attack_stack = []
+    coords, attack_stack = eai.generate_attack_improved(board,attack_stack)
+    assert isinstance(coords,tuple)
+    assert isinstance(attack_stack, list)
