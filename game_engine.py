@@ -81,6 +81,7 @@ def simple_game_loop()-> None:
         else:
             print("Miss :(")
     logging.debug("Game Over!")
+    print("Game Over!")
 
 if __name__ == "__main__":
     simple_game_loop()

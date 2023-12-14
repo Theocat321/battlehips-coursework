@@ -2034,3 +2034,83 @@ INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:23] "GET /attack?x=3&y=0 HTTP/1.1
 DEBUG:root:sunk ship!
 DEBUG:root:AI has won the game
 INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:24] "GET /attack?x=4&y=0 HTTP/1.1" 200 -
+DEBUG:root:Game started
+WARNING:root:Invalid integer input: Must be between 0 and %s10
+WARNING:root:Invalid integer input: Must be between 0 and %s10
+WARNING:root:Invalid integer input: Must be between 0 and %s10
+DEBUG:root:sunk ship!
+DEBUG:root:sunk ship!
+DEBUG:root:sunk ship!
+DEBUG:root:sunk ship!
+DEBUG:root:sunk ship!
+DEBUG:root:Game Over!
+DEBUG:root:Multiplayer game started
+DEBUG:root:Multiplayer game started
+WARNING:root:Invalid integer input: Must be between 0 and %s10
+WARNING:root:Cannot input string coordinates: returning empty tuple
+WARNING:root:Bad user input from CLI
+WARNING:root:Cannot input string coordinates: returning empty tuple
+WARNING:root:Bad user input from CLI
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 371-847-142
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:56:53] "GET /placement HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:56:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+DEBUG:root:User board recieved
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:56:59] "POST /placement HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:00] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:00] "GET /attack?x=1&y=1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:01] "GET /attack?x=2&y=2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:01] "GET /attack?x=4&y=3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:02] "GET /attack?x=3&y=2 HTTP/1.1" 200 -
+DEBUG:root:sunk ship!
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:03] "GET /attack?x=5&y=2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:04] "GET /attack?x=4&y=2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:04] "GET /attack?x=1&y=2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:05] "GET /attack?x=6&y=2 HTTP/1.1" 200 -
+DEBUG:root:sunk ship!
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:05] "GET /attack?x=7&y=2 HTTP/1.1" 200 -
+DEBUG:root:sunk ship!
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:06] "GET /attack?x=0&y=2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:07] "GET /attack?x=3&y=5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:08] "GET /attack?x=4&y=5 HTTP/1.1" 200 -
+DEBUG:root:sunk ship!
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:08] "GET /attack?x=6&y=5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:08] "GET /attack?x=5&y=6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:09] "GET /attack?x=4&y=7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:09] "GET /attack?x=3&y=7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:09] "GET /attack?x=1&y=7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:10] "GET /attack?x=1&y=6 HTTP/1.1" 200 -
+DEBUG:root:sunk ship!
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:10] "GET /attack?x=2&y=7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:11] "GET /attack?x=0&y=7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:11] "GET /attack?x=2&y=8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:12] "GET /attack?x=3&y=8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:12] "GET /attack?x=5&y=8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:12] "GET /attack?x=6&y=8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:12] "GET /attack?x=7&y=8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:13] "GET /attack?x=8&y=6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:13] "GET /attack?x=8&y=5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:13] "GET /attack?x=8&y=3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:14] "GET /attack?x=8&y=2 HTTP/1.1" 200 -
+DEBUG:root:sunk ship!
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:14] "GET /attack?x=8&y=1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:14] "GET /attack?x=8&y=0 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:15] "GET /attack?x=8&y=4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:16] "GET /attack?x=9&y=1 HTTP/1.1" 200 -
+DEBUG:root:sunk ship!
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:16] "GET /attack?x=9&y=6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:17] "GET /attack?x=9&y=9 HTTP/1.1" 200 -
+DEBUG:root:sunk ship!
+DEBUG:root:AI has won the game
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:18] "GET /attack?x=7&y=4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:22] "[35m[1mGET /attack?x=3&y=2 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:22] "[35m[1mGET /attack?x=3&y=4 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:22] "[35m[1mGET /attack?x=2&y=4 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:23] "[35m[1mGET /attack?x=1&y=4 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:23] "[35m[1mGET /attack?x=1&y=4 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:23] "[35m[1mGET /attack?x=1&y=4 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Dec/2023 13:57:23] "[35m[1mGET /attack?x=1&y=4 HTTP/1.1[0m" 500 -

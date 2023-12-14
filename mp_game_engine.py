@@ -88,6 +88,7 @@ def pretty_print_board(board:list[list]) -> None:
     Prints 2D array (board) like a table into terminal
     For pretty output ensure terminal window is large
     '''
+    print("Your board")
     print("    0 1 2 3 4 5 6 7 8 9")
     for i, row in enumerate(board):
         line = str(i) + "  "
