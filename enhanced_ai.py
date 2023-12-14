@@ -17,7 +17,8 @@ def check_attack(coordinates:tuple, board:list[list]) -> bool:
     # if not hit
     return False
 
-def generate_attack_improved(board:list[list], attack_stack:list[tuple]) -> tuple[tuple,list[tuple]] :
+def generate_attack_improved(board:list[list],
+                            attack_stack:list[tuple]) -> tuple[tuple,list[tuple]]:
     '''
     Generates an attack. If the previous attack has hit a ship, it will
     continue to hit this ship until it has sunk

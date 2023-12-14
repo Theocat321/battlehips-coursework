@@ -40,7 +40,7 @@ def  cli_coordinates_input()->tuple[int,int]:
         user_x = int(input("Input the x coordinate: "))
         user_y = int(input("Input the y coordinate: "))
     except ValueError:
-        logging.warning("Cannot input string coordinates: returning empty tuple")         
+        logging.warning("Cannot input string coordinates: returning empty tuple")
         return tuple
     except Exception:
         logging.warning("Unknown exception in cli input: returning empty tuple")
@@ -57,7 +57,7 @@ def simple_game_loop()-> None:
     battleships = components.create_battleships()
     board = components.place_battleships(board=empty_board,ships=battleships)
     ships_hit = 0
-    total_hits_required = 0 
+    total_hits_required = 0
     # Calculating hits required to end the game
     for value in battleships.values():
         total_hits_required += value
