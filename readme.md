@@ -13,7 +13,7 @@ I have written some tests which can be found in tests/test_by_me.py
 Logging is implemented throughout the project. See main.log for previous logs
 
 ### Optimal ship placement
-I have added another algorithm to the place_battleships function which places the ships in the most optimal locations. As referenced here (Cite)[http://www.datagenetics.com/blog/december32011/] the most optimal placement puts ships adjacent to one another to confuse the user. This can be used in mp_game_engine.py by changing "custom" to "optimal" in the player board
+I have added another algorithm to the place_battleships function which places the ships in the most optimal locations. As referenced here [Cite](http://www.datagenetics.com/blog/december32011/) the most optimal placement puts ships adjacent to one another to confuse the user. This can be used in mp_game_engine.py by changing "custom" to "optimal" in the player board
 
 ### Hard mode
 There is a constant in main.py named HARD_MODE. When true once the AI hits a shit it will hit the ship until sunk in consecutive turns. This is implemented in the enhanced_ai module.
@@ -116,4 +116,4 @@ Additional functionality to make the AI better - much much better!
 Author: ********** <br>
 License: MIT (License file)<br>
 Course work for ECM1400, Due 15/12/23 <br>
-Github Handle: @Theocat321 | Private repo
+Github Handle: @Theocat321 | [Github](https://github.com/Theocat321/battlehips-coursework)
