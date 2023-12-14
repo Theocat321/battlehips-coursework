@@ -1,7 +1,7 @@
 # Completed Features
 
 ### General features
-All expected features have been implemented: simple game, multi player game, flask game. ALl of which the user can win by guessing ships and the AI (where applicable) can win. 
+All expected features have been implemented: simple game, multiplayer game, flask game. All of which the user can win by guessing ships and the AI (where applicable) can win. 
 
 ### Validation
 Defensive programming and try except statements are implemented throughout the project.
@@ -11,6 +11,12 @@ I have written some tests which can be found in tests/test_by_me.py
 
 ### Logging
 Logging is implemented throughout the project. See main.log for previous logs
+
+### AI attacking
+The AI can't hit the same square twice in one game
+
+### User double clicking square
+The user cannot click the same square mutliple times
 
 ### Optimal ship placement
 I have added another algorithm to the place_battleships function which places the ships in the most optimal locations. As referenced here [Cite](http://www.datagenetics.com/blog/december32011/) the most optimal placement puts ships adjacent to one another to confuse the user. This can be used in mp_game_engine.py by changing "custom" to "optimal" in the player board
