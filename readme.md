@@ -87,6 +87,8 @@ Tests can be seen in /tests. There are 4 testing files (`test_by_me.py`, `test_f
 
 To run tests be in the root directory for the project in terminal and enter `pytest` in CLI
 
+A mixture of defensive programming and try except statments have been used in this project. 
+
 ## Developer Documentation
 Full documentation can be seen throughout the code base in comments and docstrings. There are docstrings for each function and module. 
 
