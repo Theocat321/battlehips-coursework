@@ -1975,3 +1975,62 @@ INFO:werkzeug:[33mPress CTRL+C to quit[0m
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 107-083-847
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 107-083-847
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:01] "GET /placement HTTP/1.1" 200 -
+DEBUG:root:User board recieved
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:05] "POST /placement HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:06] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:07] "GET /attack?x=6&y=1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:07] "GET /attack?x=5&y=1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:08] "GET /attack?x=4&y=3 HTTP/1.1" 200 -
+DEBUG:root:sunk ship!
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:09] "GET /attack?x=2&y=3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:09] "GET /attack?x=3&y=5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:10] "GET /attack?x=6&y=4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:10] "GET /attack?x=6&y=3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:11] "GET /attack?x=5&y=2 HTTP/1.1" 200 -
+DEBUG:root:sunk ship!
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:11] "GET /attack?x=5&y=3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:12] "GET /attack?x=3&y=3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:12] "GET /attack?x=6&y=0 HTTP/1.1" 200 -
+WARNING:root:User cannot select same square more tha once
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:12] "[35m[1mGET /attack?x=6&y=0 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:12] "GET /attack?x=5&y=0 HTTP/1.1" 200 -
+DEBUG:root:sunk ship!
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:13] "GET /attack?x=5&y=4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:14] "GET /attack?x=5&y=5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:14] "GET /attack?x=5&y=6 HTTP/1.1" 200 -
+DEBUG:root:sunk ship!
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:15] "GET /attack?x=5&y=8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:15] "GET /attack?x=3&y=8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:16] "GET /attack?x=3&y=7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:16] "GET /attack?x=4&y=8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:17] "GET /attack?x=7&y=8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:17] "GET /attack?x=8&y=6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:17] "GET /attack?x=9&y=8 HTTP/1.1" 200 -
+DEBUG:root:sunk ship!
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:18] "GET /attack?x=8&y=8 HTTP/1.1" 200 -
+DEBUG:root:sunk ship!
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:18] "GET /attack?x=6&y=8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:19] "GET /attack?x=5&y=9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:19] "GET /attack?x=6&y=9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:19] "GET /attack?x=6&y=7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:20] "GET /attack?x=8&y=7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:20] "GET /attack?x=7&y=4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:21] "GET /attack?x=8&y=3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:21] "GET /attack?x=8&y=1 HTTP/1.1" 200 -
+WARNING:root:User cannot select same square more tha once
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:21] "[35m[1mGET /attack?x=8&y=1 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:22] "GET /attack?x=7&y=1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:22] "GET /attack?x=4&y=1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:22] "GET /attack?x=3&y=1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:23] "GET /attack?x=1&y=1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:23] "GET /attack?x=3&y=0 HTTP/1.1" 200 -
+DEBUG:root:sunk ship!
+DEBUG:root:AI has won the game
+INFO:werkzeug:127.0.0.1 - - [13/Dec/2023 18:11:24] "GET /attack?x=4&y=0 HTTP/1.1" 200 -

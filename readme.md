@@ -25,7 +25,7 @@ This is the battleships course work for ECM1400. Battleships can be played via t
 
 ## Prerequisites
 
-Python packages required:
+Python packages required:<br>
 `blinker==1.7.0` <br>
 `click==8.1.7`<br>
 `Flask==3.0.0`<br>
@@ -37,6 +37,7 @@ Python packages required:
 `pytest-cov==4.1.0`<br>
 `pytest-dependency==0.5.1`<br>
 `pytest-order==1.2.0`<br>
+`Python 3.10.12`
 
 Can be seen in requirements.txt
 
@@ -112,4 +113,5 @@ Additional functionality to make the AI better - much much better!
 ## Details
 Author: ********** <br>
 License: MIT (License file)<br>
-Course work for ECM1400, Due 15/12/23
+Course work for ECM1400, Due 15/12/23 <br>
+Github Handle: @Theocat321 | Private repo
